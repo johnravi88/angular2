@@ -1,7 +1,8 @@
 import { Component } from '@angular/core'
 import { Ng2BootstrapModule } from 'ng2-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {Http, Response, Request, RequestMethod} from '@angular/http';
+import { Http, Response, Request, RequestMethod } from '@angular/http';
+
 
 @Component({
     selector: '<login></login>',
@@ -15,9 +16,15 @@ import {Http, Response, Request, RequestMethod} from '@angular/http';
 
 
 export class LoginComponent {
-    constructor(fb: FormBuilder, public http: Http){
+    constructor(fb: FormBuilder, public http: Http) {
+        this.loginForm = fb.group({
+            customerName: fb.control(null,
+                Validators.compose([Validators.required, Validators.minLength(2)]))
+
+        })
     }
     private data: any;
+    //private customerName:string ="";
     loginForm: FormGroup;
     public login(value: any) {
         console.log(value);
@@ -25,6 +32,7 @@ export class LoginComponent {
             'email': value.email,
             'password': value.password
         }
+        alert("Working Sucessfully");
         console.log(formVal);
     }
 }
