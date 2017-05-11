@@ -13,17 +13,18 @@
 						<div *ngIf="loginForm.controls['customerName'].hasError('required') && loginForm.controls['customerName'].touched" 
 						class="alert alert-danger">You must add an email.</div>
 						<div *ngIf="loginForm.controls['customerName'].hasError('minlength') && loginForm.controls['customerName'].touched" 
-						class="alert alert-danger">Email Id should be minimum </div>
+						class="alert alert-danger">Email Id should be minimum 3 </div>
 						
 						</div>
 						<div class="form-group">
-							<input class="form-control" placeholder="Password" name="password" type="password" value="" ngControl="data.password">
+							<input class="form-control" placeholder="Password" type="password" 
+							value="" [formControl]="loginForm.controls['password']" >
+							<div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" 
+						class="alert alert-danger">Password should not be empty.</div>
+						<div *ngIf="loginForm.controls['password'].hasError('minlength') && loginForm.controls['password'].touched" 
+						class="alert alert-danger">password  should be minimum 3 </div>
 						</div>
-						<div class="checkbox">
-							<label>
-			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
-			    	    	</label>
-						</div>
+					  
 						<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
 					</fieldset>
 				</form>

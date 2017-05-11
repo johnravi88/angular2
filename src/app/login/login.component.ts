@@ -19,7 +19,9 @@ export class LoginComponent {
     constructor(fb: FormBuilder, public http: Http) {
         this.loginForm = fb.group({
             customerName: fb.control(null,
-                Validators.compose([Validators.required, Validators.minLength(2)]))
+                Validators.compose([Validators.required, Validators.minLength(3)])),
+				password: fb.control(null,
+                Validators.compose([Validators.required, Validators.minLength(3)]))
 
         })
     }
